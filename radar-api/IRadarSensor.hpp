@@ -291,14 +291,15 @@ class IRadarSensor {
 
   // Miscellaneous.
 
-
   /**
-   * @brief Set country code. If local regulations do not allow current sensor
-   *        to operate, it should be turned off or faile to turn on.
+   * @brief Checks the availability by a country code.
+   *
+   * @details Checks if local regulations allow the current sensor
+   *        to operate.
    *
    * @param country_code a ISO 3166-1 alpha-2 country code.
    */
-  virtual RadarReturnCode SetCountryCode(const std::string& country_code) = 0;
+  virtual RadarReturnCode CheckCountryCode(const std::string& country_code) = 0;
 
   /**
    * @brief Get radar sensor info.

@@ -369,13 +369,15 @@ RadarReturnCode radarSetRegisterSetCb(RadarHandle* handle,
 // Miscellaneous.
 
 /**
- * @brief Set country code. If local regulations do not allow current sensor
- *        to operate, it should be turned off or faile to turn on.
+ * @brief Checks the availability by a country code.
+ *
+ * @details Checks if local regulations allow the current sensor
+ *        to operate.
  *
  * @param handle a handler for the radar instance to use.
  * @param country_code a ISO 3166-1 alpha-2 country code.
  */
-RadarReturnCode radarSetCountryCode(RadarHandle* handle,
+RadarReturnCode radarCheckCountryCode(RadarHandle* handle,
     const char* country_code);
 
 /**
