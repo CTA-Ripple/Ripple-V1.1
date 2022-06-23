@@ -212,8 +212,6 @@ typedef struct SensorInfo_s {
   Version driver_version;
   //! The Radar API version that the current driver supports.
   Version api_version;
-  //! Current sensor state
-  RadarState state;
 } SensorInfo;
 
 #ifdef __cplusplus
