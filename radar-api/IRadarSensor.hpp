@@ -308,6 +308,15 @@ class IRadarSensor {
   virtual RadarReturnCode GetSensorInfo(SensorInfo& info) = 0;
 
   /**
+   * @brief Logs sensor detailed information.
+   *
+   * @details Gets detailed sensor information and passes it
+   *        to registered observers via OnLogMessage callback
+   *        with a RLOG_INF log level.
+   */
+  virtual RadarReturnCode LogSensorDetails(void);
+
+  /**
    * @brief Set a run time log level for radar API impl.
    *
    * @param level new log level.

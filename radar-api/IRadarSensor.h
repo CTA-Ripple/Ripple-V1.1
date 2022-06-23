@@ -387,6 +387,16 @@ RadarReturnCode radarSetCountryCode(RadarHandle* handle,
 RadarReturnCode radarGetSensorInfo(RadarHandle* handle, SensorInfo* info);
 
 /**
+ * @brief Logs sensor detailed information.
+ *
+ * @details Gets detailed sensor information and passes it
+ *        via RadarLogCB callback with a RLOG_INF log level.
+ *
+ * @param handle a handler for the radar instance to use.
+ */
+RadarReturnCode radarLogSensorDetails(RadarHandle* handle);
+
+/**
  * @brief Set a run time log level for radar API impl.
  *
  * @param handle a handler for the radar instance to use.
