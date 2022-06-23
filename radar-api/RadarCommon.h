@@ -212,8 +212,6 @@ typedef struct SensorInfo_s {
   Version driver_version;
   //! The Radar API version that the current driver supports.
   Version api_version;
-  //! Maximum ADC sampling rate in hertz.
-  uint64_t max_sampling_rate_hz;
   //! Current sensor state
   RadarState state;
 } SensorInfo;
