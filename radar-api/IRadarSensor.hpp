@@ -354,6 +354,22 @@ class IRadarSensor {
 //--------------------------------------
 
 /**
+ * @brief Initializes the radar module.
+ *
+ * @note This function should be called before any
+ *        other radar related API.
+ */
+RadarReturnCode RadarSensorInit(void);
+
+/**
+ * @brief Deinitializes the radar module.
+ *
+ * @note This function should be called after any
+ *        other radar related API.
+ */
+RadarReturnCode RadarSensorDeinit(void);
+
+/**
  * @brief Return the intsance of the RadarSensor implementation.
  */
 IRadarSensor* GetRadarSensorImpl(void);
