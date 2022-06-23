@@ -346,8 +346,12 @@ RadarReturnCode radarSetBurstReadyCb(RadarHandle* handle, RadarBurstReadyCB cb,
     void* user_data);
 
 /**
- * @biref Set a callback that will be invoked with a log message from
- *        the radar API impl.
+ * @biref Sets a log callback function.
+ *
+ * @details Sets a log callback function that will be invoked with
+ *        log messages from the radar API impl except radarInit/radarDeinit,
+ *        radarCreate/radarDestroy and radarSetLogCb itself.
+ *        To unset the callback, pass a NULL to the cb argument.
  *
  * @param handle a handler for the radar instance to use.
  * @param cb a callback function.

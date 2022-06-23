@@ -93,15 +93,25 @@ class IRadarSensor {
   // Feedback
 
   /**
-   * @brief Add a new observer object that will get notified about
-   * the Radar sensor activity.
+   * @brief Add a new observer object.
+   *
+   * @detils Add a new observer object that will get notified about
+   *         the Radar sensor activity.
+   *
+   * @note Log messages will not be generated during execution of
+   *       ctor/dtor and AddObserver/RemoveObserver API.
    *
    * @param observer pointer to the implmenetation of the interface to add.
    */
   virtual RadarReturnCode AddObserver(IRadarSensorObserver* observer) = 0;
 
   /**
-   * @brief Remove the previously registered observer from subscribers list.
+   * @brief Remove the observer.
+   *
+   * @details Remove the previously registered observer from subscribers list.
+   *
+   * @note Log messages will not be generated during execution of
+   *       ctor/dtor and AddObserver/RemoveObserver API.
    *
    * @param observer pointer to the implmenetation of the interface to remove.
    */
