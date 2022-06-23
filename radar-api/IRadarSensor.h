@@ -1,4 +1,11 @@
-/*
+/**
+ * @file
+ *
+ * @brief
+ *
+ * @details
+ *
+ * ```
  * Copyright 2022 CTA Radar API Technical Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +19,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * ```
  */
 
 #ifndef I_RADAR_SENSOR_H_
@@ -31,22 +39,20 @@ extern "C" {
 //----- Data types ---------------------
 //--------------------------------------
 
-// Forward declaration for a custom radar driver implementation.
+//! Forward declaration for a custom radar driver implementation.
 typedef struct RadarHandleImpl RadarHandle;
 
-/*
+/**
  * @brief A callback function declaration that will be invoked
  *        when a new burst is ready for read. Can be set using
  *        radarSetBurstReadyCb function.
  *
  * @param user_data a pointer to a custom user data that is passed to
  *        radarSetBurstReadyCb function.
- *
- * @return void
  */
 typedef void (*RadarBurstReadyCB)(void* user_data);
 
-/*
+/**
  * @brief A callback function declaration that will be invoked
  *        when a new log message is available from the radar driver.
  *        The callback can be registered with radarSetLogCb function.
@@ -59,14 +65,12 @@ typedef void (*RadarBurstReadyCB)(void* user_data);
  * @param user_data a pointer to a custom user data that is passed to
  *        radarSetLogCb function.
  * @param message the actuall log message.
- *
- * @return void
  */
 typedef void (*RadarLogCB)(RadarLogLevel level, const char* file,
                            const char* function, int line,
                            void* user_data, const char* message);
 
-/*
+/**
  * @brief A callback function declaration that will be invoked
  *        when the radar driver sets a new value for the sensor chip register.
  *
@@ -74,8 +78,6 @@ typedef void (*RadarLogCB)(RadarLogLevel level, const char* file,
  * @param value a new value to be set in the register.
  * @param user_data a pointer to a custom user data that is passed to
  *        radarSetRegisterSetCb function.
- *
- * @return void.
  */
 typedef void (*RadarRegisterSetCB)(uint32_t address, uint32_t value,
                                    void* user_data);
@@ -86,20 +88,21 @@ typedef void (*RadarRegisterSetCB)(uint32_t address, uint32_t value,
 
 // Lifecycle.
 
-/*
+/**
  * @brief Initialize a radar module.
  *
  * @note This function should be called the most first of all radar API.
  */
 RadarReturnCode radarInit(void);
-/*
+
+/**
  * @brief De-initialize a radar module.
  *
  * @note This function should be called the most last of all radar API.
  */
 RadarReturnCode radarDeinit(void);
 
-/*
+/**
  * @brief Create a radar module instance.
  *
  * @param id a unique identifier of the radar chip.
@@ -110,7 +113,7 @@ RadarReturnCode radarDeinit(void);
  */
 RadarHandle* radarCreate(int32_t id);
 
-/*
+/**
  * @brief Destroy a radar module instance.
  *
  * @param handle the handle of the radar instance to be destroyed.
@@ -119,7 +122,7 @@ RadarReturnCode radarDestroy(RadarHandle* handle);
 
 // Power management.
 
-/*
+/**
  * @brief Get the current power state.
  *
  * @param handle a handler for the radar instance to use.
@@ -127,28 +130,28 @@ RadarReturnCode radarDestroy(RadarHandle* handle);
  */
 RadarReturnCode radarGetState(RadarHandle* handle, RadarState* state);
 
-/*
+/**
  * @brief Turn on the radar.
  *
  * @param handle a handler for the radar instance to use.
  */
 RadarReturnCode radarTurnOn(RadarHandle* handle);
 
-/*
+/**
  * @brief Turn off the radar.
  *
  * @param handle a handler for the radar instance to use.
  */
 RadarReturnCode radarTurnOff(RadarHandle* handle);
 
-/*
+/**
  * @brief Put the radar to sleep and preserve configuration.
  *
  * @param handle a handler for the radar instance to use.
  */
 RadarReturnCode radarGoSleep(RadarHandle* handle);
 
-/*
+/**
  * @brief Wake up the radar.
  *
  * @param handle a handler for the radar instance to use.
@@ -157,7 +160,7 @@ RadarReturnCode radarWakeUp(RadarHandle* handle);
 
 // Configuration.
 
-/*
+/**
  * @brief Set mode of the internal FIFO that holds radar bursts.
  *
  * @param handle a handler for the radar instance to use.
@@ -165,7 +168,7 @@ RadarReturnCode radarWakeUp(RadarHandle* handle);
  */
 RadarReturnCode radarSetFifoMode(RadarHandle* handle, RadarFifoMode mode);
 
-/*
+/**
  * Get the total available configuration slots.
  *
  * @param handle a handler for the radar instance to use.
@@ -173,7 +176,7 @@ RadarReturnCode radarSetFifoMode(RadarHandle* handle, RadarFifoMode mode);
  */
 RadarReturnCode radarGetNumConfigSlots(RadarHandle* handle, int8_t* num_slots);
 
-/*
+/**
  * @brief Activate a specified configuration slot. Does not start the radar.
  *
  * @param handle a handler for the radar instance to use.
@@ -184,7 +187,7 @@ RadarReturnCode radarGetNumConfigSlots(RadarHandle* handle, int8_t* num_slots);
  */
 RadarReturnCode radarActivateConfig(RadarHandle* handle, int8_t slot_id);
 
-/*
+/**
  * @brief Deactivate a specified configuration slot.
  *
  * @param handle a handler for the radar instance to use.
@@ -192,7 +195,7 @@ RadarReturnCode radarActivateConfig(RadarHandle* handle, int8_t slot_id);
  */
 RadarReturnCode radarDeactivateConfig(RadarHandle* handle, int8_t slot_id);
 
-/*
+/**
  * @brief Check if the configuration slot is active.
  *
  * @param handle a handler for the radar instance to use.
@@ -202,7 +205,7 @@ RadarReturnCode radarDeactivateConfig(RadarHandle* handle, int8_t slot_id);
 RadarReturnCode radarIsActiveConfig(RadarHandle* handle, int8_t slot_id,
     bool* is_active);
 
-/*
+/**
  * @brief Get a main radar parameter.
  *
  * @param handle a handler for the radar instance to use.
@@ -212,7 +215,8 @@ RadarReturnCode radarIsActiveConfig(RadarHandle* handle, int8_t slot_id,
  */
 RadarReturnCode radarGetMainParam(RadarHandle* handle, uint32_t slot_id,
     RadarMainParam id, uint32_t* value);
-/*
+
+/**
  * @brief Get a main radar parameter.
  *
  * @param handle a handler for the radar instance to use.
@@ -223,7 +227,7 @@ RadarReturnCode radarGetMainParam(RadarHandle* handle, uint32_t slot_id,
 RadarReturnCode radarSetMainParam(RadarHandle* handle, uint32_t slot_id,
     RadarMainParam id, uint32_t value);
 
-/*
+/**
  * @brief Get a main radar parameter range of acceptable values.
  *
  * @param handle a handler for the radar instance to use.
@@ -234,7 +238,7 @@ RadarReturnCode radarSetMainParam(RadarHandle* handle, uint32_t slot_id,
 RadarReturnCode radarGetMainParamRange(RadarHandle* handle, RadarMainParam id,
     uint32_t* min_value, uint32_t* max_value);
 
-/*
+/**
  * @brief Get a channel specific parameter.
  *
  * @param handle a handler for the radar instance to use.
@@ -246,7 +250,7 @@ RadarReturnCode radarGetMainParamRange(RadarHandle* handle, RadarMainParam id,
 RadarReturnCode radarGetChannelParam(RadarHandle* handle, uint32_t slot_id,
     uint8_t channel_id, RadarChannelParam id, uint32_t* value);
 
-/*
+/**
  * @brief Set a channel specific parameter.
  *
  * @param handle a handler for the radar instance to use.
@@ -258,7 +262,7 @@ RadarReturnCode radarGetChannelParam(RadarHandle* handle, uint32_t slot_id,
 RadarReturnCode radarSetChannelParam(RadarHandle* handle, uint32_t slot_id,
     uint8_t channel_id, RadarChannelParam id, uint32_t value);
 
-/*
+/**
  * @brief Get a channel pamaeter range of acceptable values.
  *
  * @param handle a handler for the radar instance to use.
@@ -269,7 +273,7 @@ RadarReturnCode radarSetChannelParam(RadarHandle* handle, uint32_t slot_id,
 RadarReturnCode radarGetChannelParamRange(RadarHandle* handle,
     RadarChannelParam id, uint32_t* min_value, uint32_t* max_value);
 
-/*
+/**
  * @brief Get a vendor specific parameter.
  *
  * @param handle a handler for the radar instance to use.
@@ -280,7 +284,7 @@ RadarReturnCode radarGetChannelParamRange(RadarHandle* handle,
 RadarReturnCode radarGetVendorParam(RadarHandle* handle, uint32_t slot_id,
     RadarVendorParam id, uint32_t* value);
 
-/*
+/**
  * @brief Set a vendor specific parameter.
  *
  * @param handle a handler for the radar instance to use.
@@ -293,21 +297,21 @@ RadarReturnCode radarSetVendorParam(RadarHandle* handle, uint32_t slot_id,
 
 // Running.
 
-/*
+/**
  * @brief Start running the radar with active configuration.
  *
  * @param handle a handler for the radar instance to use.
  */
 RadarReturnCode radarStartDataStreaming(RadarHandle* handle);
 
-/*
+/**
  * @brief Stop running the radar.
  *
  * @param handle a handler for the radar instance to use.
  */
 RadarReturnCode radarStopDataStreaming(RadarHandle* handle);
 
-/*
+/**
  * @brief Check if the radar has a new burst ready to read.
  *
  * @param handle a handler for the radar instance to use.
@@ -315,7 +319,7 @@ RadarReturnCode radarStopDataStreaming(RadarHandle* handle);
  */
 RadarReturnCode radarIsBurstReady(RadarHandle* handle, bool* is_ready);
 
-/*
+/**
  * @brief Initiate reading a new burst.
  *
  * @param handle a handler for the radar instance to use.
@@ -331,7 +335,7 @@ RadarReturnCode radarReadBurst(RadarHandle* handle, RadarBurstFormat* format,
 
 // Feedback.
 
-/*
+/**
  * @brief Set a callback that will be invoked when a new burst is ready to read.
  *
  * @param handle a handler for the radar instance to use.
@@ -341,7 +345,7 @@ RadarReturnCode radarReadBurst(RadarHandle* handle, RadarBurstFormat* format,
 RadarReturnCode radarSetBurstReadyCb(RadarHandle* handle, RadarBurstReadyCB cb,
     void* user_data);
 
-/*
+/**
  * @biref Set a callback that will be invoked with a log message from
  *        the radar API impl.
  *
@@ -352,7 +356,7 @@ RadarReturnCode radarSetBurstReadyCb(RadarHandle* handle, RadarBurstReadyCB cb,
 RadarReturnCode radarSetLogCb(RadarHandle* handle, RadarLogCB cb,
     void* user_data);
 
-/*
+/**
  * @brief Set a callback that will be invoked when a radar’s register is set.
  *
  * @param handle a handler for the radar instance to use.
@@ -364,7 +368,7 @@ RadarReturnCode radarSetRegisterSetCb(RadarHandle* handle,
 
 // Miscellaneous.
 
-/*
+/**
  * @brief Set country code. If local regulations do not allow current sensor
  *        to operate, it should be turned off or faile to turn on.
  *
@@ -374,7 +378,7 @@ RadarReturnCode radarSetRegisterSetCb(RadarHandle* handle,
 RadarReturnCode radarSetCountryCode(RadarHandle* handle,
     const char* country_code);
 
-/*
+/**
  * @brief Get radar sensor info.
  *
  * @param handle a handler for the radar instance to use.
@@ -382,7 +386,7 @@ RadarReturnCode radarSetCountryCode(RadarHandle* handle,
  */
 RadarReturnCode radarGetSensorInfo(RadarHandle* handle, SensorInfo* info);
 
-/*
+/**
  * @brief Set a run time log level for radar API impl.
  *
  * @param handle a handler for the radar instance to use.
@@ -390,7 +394,7 @@ RadarReturnCode radarGetSensorInfo(RadarHandle* handle, SensorInfo* info);
  */
 RadarReturnCode radarSetLogLevel(RadarHandle* handle, RadarLogLevel level);
 
-/*
+/**
  * @brief Get all register values from the radar sensor.
  *
  * @param handle a handler for the radar instance to use.
@@ -404,7 +408,7 @@ RadarReturnCode radarSetLogLevel(RadarHandle* handle, RadarLogLevel level);
 RadarReturnCode radarGetAllRegisters(RadarHandle* handle, uint32_t* addresses,
     uint32_t* values, uint32_t* count);
 
-/*
+/**
  * @brief Get a register value directly from the sensor.
  *
  * @param handle a handler for the radar instance to use.
@@ -414,7 +418,7 @@ RadarReturnCode radarGetAllRegisters(RadarHandle* handle, uint32_t* addresses,
 RadarReturnCode radarGetRegister(RadarHandle* handle, uint32_t address,
     uint32_t* value);
 
-/*
+/**
  * @brief Set a register value directly to the sensor.
  *
  * @param handle a handler for the radar instance to use.
