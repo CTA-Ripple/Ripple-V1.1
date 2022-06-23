@@ -219,35 +219,69 @@ class IRadarSensor {
       uint32_t& min_value, uint32_t& max_value) = 0;
 
   /**
-   * @brief Get a channel specific parameter.
+   * @brief Get a TX specific parameter.
    *
    * @param slot_id a configuration slot ID where to read the parameter value.
-   * @param channel_id a channel ID which parameter needs to be read.
+   * @param antenna_mask antenna bit mask from which to get the parameter value.
+   *                     Only one bit should be set.
    * @param id a parameter ID to read.
    * @param value to where a parameter value will be written into.
    */
-  virtual RadarReturnCode GetChannelParam(uint8_t slot_id, uint8_t channel_id,
-      RadarChannelParam id, uint32_t& value) = 0;
+  virtual RadarReturnCode GetTxParam(uint8_t slot_id, uint32_t antanna_mask,
+      RadarTxParam id, uint32_t& value) = 0;
 
   /**
-   * @brief Set a channel specific parameter.
+   * @brief Set a TX specific parameter.
    *
    * @param slot_id a configuration slot ID where to set a new parameter value.
-   * @param channel_id a channel ID which parameter needs to be set.
+   * @param antenna_mask antenna bit mask for which to get the parameter value.
    * @param id a parameter ID to set.
    * @param value a new value for the parameter.
    */
-  virtual RadarReturnCode SetChannelParam(uint8_t slot_id, uint8_t channel_id,
-      RadarChannelParam id, uint32_t value) = 0;
+  virtual RadarReturnCode SetTxParam(uint8_t slot_id, uint32_t antanna_mask,
+      RadarTxParam id, uint32_t value) = 0;
 
   /**
-   * @brief Get a channel pamaeter range of acceptable values.
+   * @brief Get a RX specific parameter.
+   *
+   * @param slot_id a configuration slot ID where to read the parameter value.
+   * @param antenna_mask antenna bit mask from which to get the parameter value.
+   *                     Only one bit should be set.
+   * @param id a parameter ID to read.
+   * @param value to where a parameter value will be written into.
+   */
+  virtual RadarReturnCode GetRxParam(uint8_t slot_id, uint32_t antanna_mask,
+      RadarRxParam id, uint32_t& value) = 0;
+
+  /**
+   * @brief Set a RX specific parameter.
+   *
+   * @param slot_id a configuration slot ID where to set a new parameter value.
+   * @param antenna_mask antenna bit mask for which to get the parameter value.
+   * @param id a parameter ID to set.
+   * @param value a new value for the parameter.
+   */
+  virtual RadarReturnCode SetRxParam(uint8_t slot_id, uint32_t antanna_mask,
+      RadarRxParam id, uint32_t value) = 0;
+
+  /**
+   * @brief Get a TX antenna parameter range of acceptable values.
    *
    * @param id a parameter ID which range of values to read.
    * @param min_value where a minimum parameter value will be set.
    * @param max_value where a maximum parameter value will be set.
    */
-  virtual RadarReturnCode GetChannelParamRange(RadarChannelParam id,
+  virtual RadarReturnCode GetTxParamRange(RadarTxParam id,
+      uint32_t& min_value, uint32_t& max_value) = 0;
+
+  /**
+   * @brief Get a RX antenna parameter range of acceptable values.
+   *
+   * @param id a parameter ID which range of values to read.
+   * @param min_value where a minimum parameter value will be set.
+   * @param max_value where a maximum parameter value will be set.
+   */
+  virtual RadarReturnCode GetRxParamRange(RadarRxParam id,
       uint32_t& min_value, uint32_t& max_value) = 0;
 
   /**

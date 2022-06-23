@@ -239,39 +239,76 @@ RadarReturnCode radarGetMainParamRange(RadarHandle* handle, RadarMainParam id,
     uint32_t* min_value, uint32_t* max_value);
 
 /**
- * @brief Get a channel specific parameter.
+ * @brief Get a TX specific parameter.
  *
  * @param handle a handler for the radar instance to use.
  * @param slot_id a configuration slot ID where to read the parameter value.
- * @param channel_id a channel ID which parameter needs to be read.
+ * @param antenna_mask antenna bit mask from which to get the parameter value.
+ *                     Only one bit should be set.
  * @param id a parameter ID to read.
  * @param value a pointer to where a parameter value will be written into.
  */
-RadarReturnCode radarGetChannelParam(RadarHandle* handle, uint8_t slot_id,
-    uint8_t channel_id, RadarChannelParam id, uint32_t* value);
+RadarReturnCode radarGetTxParam(RadarHandle* handle, uint8_t slot_id,
+    uint32_t antenna_mask, RadarTxParam id, uint32_t* value);
 
 /**
- * @brief Set a channel specific parameter.
+ * @brief Set a TX specific parameter.
  *
  * @param handle a handler for the radar instance to use.
  * @param slot_id a configuration slot ID where to set a new parameter value.
- * @param channel_id a channel ID which parameter needs to be set.
+ * @param antenna_mask antenna bit mask for which to set the parameter value.
  * @param id a parameter ID to set.
  * @param value a new value for the parameter.
  */
-RadarReturnCode radarSetChannelParam(RadarHandle* handle, uint8_t slot_id,
-    uint8_t channel_id, RadarChannelParam id, uint32_t value);
+RadarReturnCode radarSetTxParam(RadarHandle* handle, uint8_t slot_id,
+    uint32_t antenna_mask, RadarTxParam id, uint32_t value);
 
 /**
- * @brief Get a channel pamaeter range of acceptable values.
+ * @brief Get a RX specific parameter.
+ *
+ * @param handle a handler for the radar instance to use.
+ * @param slot_id a configuration slot ID where to read the parameter value.
+ * @param antenna_mask antenna bit mask form which to get the parameter value.
+ *                     Only one bit should be set.
+ * @param id a parameter ID to read.
+ * @param value a pointer to where a parameter value will be written into.
+ */
+RadarReturnCode radarGetRxParam(RadarHandle* handle, uint8_t slot_id,
+    uint32_t antenna_mask, RadarRxParam id, uint32_t* value);
+
+/**
+ * @brief Set a RX specific parameter.
+ *
+ * @param handle a handler for the radar instance to use.
+ * @param slot_id a configuration slot ID where to set a new parameter value.
+ * @param antenna_mask antenna bit mask for which to set the parameter value.
+ * @param id a parameter ID to set.
+ * @param value a new value for the parameter.
+ */
+RadarReturnCode radarSetRxParam(RadarHandle* handle, uint8_t slot_id,
+    uint32_t antenna_mask, RadarRxParam id, uint32_t value);
+
+/**
+ * @brief Get a TX antenna parameter range of acceptable values.
  *
  * @param handle a handler for the radar instance to use.
  * @param id a parameter ID which range of values to read.
  * @param min_value a pointer where a minimum parameter value will be set.
  * @param max_value a pointer where a maximum parameter value will be set.
  */
-RadarReturnCode radarGetChannelParamRange(RadarHandle* handle,
-    RadarChannelParam id, uint32_t* min_value, uint32_t* max_value);
+RadarReturnCode radarGetTxParamRange(RadarHandle* handle,
+    RadarTxParam id, uint32_t* min_value, uint32_t* max_value);
+
+/**
+ * @brief Get a RX antenna parameter range of acceptable values.
+ *
+ * @param handle a handler for the radar instance to use.
+ * @param id a parameter ID which range of values to read.
+ * @param min_value a pointer where a minimum parameter value will be set.
+ * @param max_value a pointer where a maximum parameter value will be set.
+ */
+RadarReturnCode radarGetRxParamRange(RadarHandle* handle,
+    RadarRxParam id, uint32_t* min_value, uint32_t* max_value);
 
 /**
  * @brief Get a vendor specific parameter.

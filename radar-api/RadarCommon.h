@@ -128,23 +128,30 @@ typedef uint32_t RadarMainParam;
 #define RADAR_PARAM_TX_ANTENNA_MASK         9
 //! Bit mask for enabled RX antennas.
 #define RADAR_PARAM_RX_ANTENNA_MASK        10
-//! Power for TX antennas.
-#define RADAR_PARAM_TX_POWER               11
+//! Unused parameter.
+#define RADAR_PARAM_UNUSED_0               11
 //! ADC sampling frequency.
 #define RADAR_PARAM_ADC_SAMPLING_HZ        12
 
-//! A channel specific list of parameters.
-typedef uint32_t RadarChannelParam;
+//! A TX antennas specific list of parameters.
+typedef uint32_t RadarTxParam;
 
 //! A default undefined value that should be used at initialization.
-#define CHANNEL_PARAM_UNDEFINED             0
-//! Variable Gain Amplifiers (VGA) in dB.
-#define CHANNEL_PARAM_VGA_DB                1
-//! High Phase (HP) filter gain in dB.
-#define CHANNEL_PARAM_HP_GAIN_DB            2
-//! High Phase (HP) cut off frequency in kHz.
-#define CHANNEL_PARAM_HP_CUTOFF_KHZ         3
+#define TX_PARAM_UNDEFINED                  0
+//! A TX antenna emitting power in dB.
+#define TX_PARAM_POWER_DB                   1
 
+//! A RX antennas specific list of parameters.
+typedef uint32_t RadarRxParam;
+
+//! A default undefined value that should be used at initialization.
+#define RX_PARAM_UNDEFINED                  0
+//! Variable Gain Amplifiers (VGA) in dB.
+#define RX_PARAM_VGA_DB                     1
+//! High Phase (HP) filter gain in dB.
+#define RX_PARAM_HP_GAIN_DB                 2
+//! High Phase (HP) cut off frequency in kHz.
+#define RX_PARAM_HP_CUTOFF_KHZ              3
 
 //! Forward declaration for a list of vensor specific parameters.
 typedef uint32_t RadarVendorParam;
