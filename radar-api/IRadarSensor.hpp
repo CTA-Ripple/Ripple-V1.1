@@ -151,7 +151,7 @@ class IRadarSensor {
    *
    * @param num_slots where the number of config slots to write.
    */
-  virtual RadarReturnCode GetNumConfigSlots(int8_t& num_slots) = 0;
+  virtual RadarReturnCode GetNumConfigSlots(uint8_t& num_slots) = 0;
 
   /**
    * @brief Activate a specified configuration slot. Does not start the radar.
@@ -185,17 +185,17 @@ class IRadarSensor {
    * @param id a parameter ID to be read.
    * @param value where a parameter value will be written into.
    */
-  virtual RadarReturnCode GetMainParam(uint32_t slot_id, RadarMainParam id,
+  virtual RadarReturnCode GetMainParam(uint8_t slot_id, RadarMainParam id,
       uint32_t& value) = 0;
 
   /**
-   * @brief Get a main radar parameter.
+   * @brief Set a main radar parameter.
    *
    * @param slot_id a configuration slot ID where to set a new parameter value.
    * @param id a parameter ID to be set.
    * @param value a new value for the parameter.
    */
-  virtual RadarReturnCode SetMainParam(uint32_t slot_id, RadarMainParam id,
+  virtual RadarReturnCode SetMainParam(uint8_t slot_id, RadarMainParam id,
       uint32_t value) = 0;
 
   /**
@@ -216,7 +216,7 @@ class IRadarSensor {
    * @param id a parameter ID to read.
    * @param value to where a parameter value will be written into.
    */
-  virtual RadarReturnCode GetChannelParam(uint32_t slot_id, uint8_t channel_id,
+  virtual RadarReturnCode GetChannelParam(uint8_t slot_id, uint8_t channel_id,
       RadarChannelParam id, uint32_t& value) = 0;
 
   /**
@@ -227,7 +227,7 @@ class IRadarSensor {
    * @param id a parameter ID to set.
    * @param value a new value for the parameter.
    */
-  virtual RadarReturnCode SetChannelParam(uint32_t slot_id, uint8_t channel_id,
+  virtual RadarReturnCode SetChannelParam(uint8_t slot_id, uint8_t channel_id,
       RadarChannelParam id, uint32_t value) = 0;
 
   /**
@@ -247,7 +247,7 @@ class IRadarSensor {
    * @param id a vendor specific parameter ID to read.
    * @param value to where a parameter value will be written into.
    */
-  virtual RadarReturnCode GetVendorParam(uint32_t slot_id, RadarVendorParam id,
+  virtual RadarReturnCode GetVendorParam(uint8_t slot_id, RadarVendorParam id,
       uint32_t& value) = 0;
 
   /**
@@ -257,7 +257,7 @@ class IRadarSensor {
    * @param id a parameter ID to set.
    * @param value a new value for the parameter.
    */
-  virtual RadarReturnCode SetVendorParam(uint32_t slot_id, RadarVendorParam id,
+  virtual RadarReturnCode SetVendorParam(uint8_t slot_id, RadarVendorParam id,
       uint32_t value) = 0;
 
   // Running.

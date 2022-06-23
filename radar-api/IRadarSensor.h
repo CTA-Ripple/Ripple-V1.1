@@ -174,7 +174,7 @@ RadarReturnCode radarSetFifoMode(RadarHandle* handle, RadarFifoMode mode);
  * @param handle a handler for the radar instance to use.
  * @param num_slots a pointer to where the number of config slots to write.
  */
-RadarReturnCode radarGetNumConfigSlots(RadarHandle* handle, int8_t* num_slots);
+RadarReturnCode radarGetNumConfigSlots(RadarHandle* handle, uint8_t* num_slots);
 
 /**
  * @brief Activate a specified configuration slot. Does not start the radar.
@@ -185,7 +185,7 @@ RadarReturnCode radarGetNumConfigSlots(RadarHandle* handle, int8_t* num_slots);
  * @note This function will perform the final configuration check for
  *       compatibility before activating.
  */
-RadarReturnCode radarActivateConfig(RadarHandle* handle, int8_t slot_id);
+RadarReturnCode radarActivateConfig(RadarHandle* handle, uint8_t slot_id);
 
 /**
  * @brief Deactivate a specified configuration slot.
@@ -193,7 +193,7 @@ RadarReturnCode radarActivateConfig(RadarHandle* handle, int8_t slot_id);
  * @param handle a handler for the radar instance to use.
  * @param slot_id a configuration slot ID to deactivate.
  */
-RadarReturnCode radarDeactivateConfig(RadarHandle* handle, int8_t slot_id);
+RadarReturnCode radarDeactivateConfig(RadarHandle* handle, uint8_t slot_id);
 
 /**
  * @brief Check if the configuration slot is active.
@@ -202,7 +202,7 @@ RadarReturnCode radarDeactivateConfig(RadarHandle* handle, int8_t slot_id);
  * @param slot_id a configuration slot ID to check if active.
  * @param is_active a pointer to where the result will be written into.
  */
-RadarReturnCode radarIsActiveConfig(RadarHandle* handle, int8_t slot_id,
+RadarReturnCode radarIsActiveConfig(RadarHandle* handle, uint8_t slot_id,
     bool* is_active);
 
 /**
@@ -213,18 +213,18 @@ RadarReturnCode radarIsActiveConfig(RadarHandle* handle, int8_t slot_id,
  * @param id a parameter ID to be read.
  * @param value a pointer to where a parameter value will be written into.
  */
-RadarReturnCode radarGetMainParam(RadarHandle* handle, uint32_t slot_id,
+RadarReturnCode radarGetMainParam(RadarHandle* handle, uint8_t slot_id,
     RadarMainParam id, uint32_t* value);
 
 /**
- * @brief Get a main radar parameter.
+ * @brief Set a main radar parameter.
  *
  * @param handle a handler for the radar instance to use.
  * @param slot_id a configuration slot ID where to set a new parameter value.
  * @param id a parameter ID to be set.
  * @param value a new value for the parameter.
  */
-RadarReturnCode radarSetMainParam(RadarHandle* handle, uint32_t slot_id,
+RadarReturnCode radarSetMainParam(RadarHandle* handle, uint8_t slot_id,
     RadarMainParam id, uint32_t value);
 
 /**
@@ -247,7 +247,7 @@ RadarReturnCode radarGetMainParamRange(RadarHandle* handle, RadarMainParam id,
  * @param id a parameter ID to read.
  * @param value a pointer to where a parameter value will be written into.
  */
-RadarReturnCode radarGetChannelParam(RadarHandle* handle, uint32_t slot_id,
+RadarReturnCode radarGetChannelParam(RadarHandle* handle, uint8_t slot_id,
     uint8_t channel_id, RadarChannelParam id, uint32_t* value);
 
 /**
@@ -259,7 +259,7 @@ RadarReturnCode radarGetChannelParam(RadarHandle* handle, uint32_t slot_id,
  * @param id a parameter ID to set.
  * @param value a new value for the parameter.
  */
-RadarReturnCode radarSetChannelParam(RadarHandle* handle, uint32_t slot_id,
+RadarReturnCode radarSetChannelParam(RadarHandle* handle, uint8_t slot_id,
     uint8_t channel_id, RadarChannelParam id, uint32_t value);
 
 /**
@@ -281,7 +281,7 @@ RadarReturnCode radarGetChannelParamRange(RadarHandle* handle,
  * @param id a vendor specific parameter ID to read.
  * @param value a pointer to where a parameter value will be written into.
  */
-RadarReturnCode radarGetVendorParam(RadarHandle* handle, uint32_t slot_id,
+RadarReturnCode radarGetVendorParam(RadarHandle* handle, uint8_t slot_id,
     RadarVendorParam id, uint32_t* value);
 
 /**
@@ -292,7 +292,7 @@ RadarReturnCode radarGetVendorParam(RadarHandle* handle, uint32_t slot_id,
  * @param id a parameter ID to set.
  * @param value a new value for the parameter.
  */
-RadarReturnCode radarSetVendorParam(RadarHandle* handle, uint32_t slot_id,
+RadarReturnCode radarSetVendorParam(RadarHandle* handle, uint8_t slot_id,
     RadarVendorParam id, uint32_t value);
 
 // Running.
