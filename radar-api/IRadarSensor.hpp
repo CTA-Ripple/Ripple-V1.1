@@ -101,7 +101,7 @@ class IRadarSensor {
    * @note Log messages will not be generated during execution of
    *       ctor/dtor and AddObserver/RemoveObserver API.
    *
-   * @param observer pointer to the implmenetation of the interface to add.
+   * @param observer pointer to the implementation of the interface to add.
    */
   virtual RadarReturnCode AddObserver(IRadarSensorObserver* observer) = 0;
 
@@ -113,7 +113,7 @@ class IRadarSensor {
    * @note Log messages will not be generated during execution of
    *       ctor/dtor and AddObserver/RemoveObserver API.
    *
-   * @param observer pointer to the implmenetation of the interface to remove.
+   * @param observer pointer to the implementation of the interface to remove.
    */
   virtual RadarReturnCode RemoveObserver(IRadarSensorObserver* observer) = 0;
 
@@ -415,7 +415,7 @@ RadarReturnCode RadarSensorInit(void);
 RadarReturnCode RadarSensorDeinit(void);
 
 /**
- * @brief Return the intsance of the RadarSensor implementation.
+ * @brief Return the instance of the RadarSensor implementation.
  */
 IRadarSensor* GetRadarSensorImpl(void);
 

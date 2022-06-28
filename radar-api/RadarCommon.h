@@ -179,7 +179,7 @@ typedef struct RadarBurstFormat_s {
   union {
     struct {
       //! True/1 if channels and samples are interleaved.
-      uint16_t is_channels_interlieved: 1;
+      uint16_t is_channels_interleaved: 1;
       //! True/1 if a word is in big endian.
       uint16_t is_big_endian: 1;
       //! Reserved for future use.
